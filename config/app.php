@@ -2,9 +2,8 @@
 
 return [
 
-    'node_modules_folder_path' => 'E:\Melo\Node modulok',
-
-    'laravel_methods_folder_path' => 'E:\Melo\laravel-helper-methods',
+    'node_modules_folder_path' => 'D:/Projektek/Sajat/Sablonok/Node modulok',
+    'laravel_methods_folder_path' => 'D:/Projektek/Sajat/laravel-helper-methods',
 
     /*
     |--------------------------------------------------------------------------
