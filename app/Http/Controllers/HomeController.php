@@ -17,11 +17,33 @@ class HomeController extends Controller
         return view('layouts.dynamicPage', compact('template'));
     }
 
+    public function contact() {
+        $template = (object) [
+            'type' => 'dynamic-template',
+            'data' => (object) [
+                'template_type_name' => 'ecom_contact_page',
+                'params' => (object) [],
+            ]
+        ];
+        return view('layouts.dynamicPage', compact('template'));
+    }
+
     public function products() {
         $template = (object) [
             'type' => 'dynamic-template',
             'data' => (object) [
                 'template_type_name' => 'ecom_products_page',
+                'params' => (object) [],
+            ]
+        ];
+        return view('layouts.dynamicPage', compact('template'));
+    }
+
+    public function info() {
+        $template = (object) [
+            'type' => 'dynamic-template',
+            'data' => (object) [
+                'template_type_name' => 'ecom_info_page',
                 'params' => (object) [],
             ]
         ];
