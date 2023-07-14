@@ -19,7 +19,7 @@
         "@popperjs/core": "^2.11.7",
         "agency-landing-page-vue-components": "^1.0.6",
         "blue-admin-vue-components": "^1.0.1",
-        "bootstrap": "^4.6.0",
+        "bootstrap": "5.1",
         "bootstrap-select": "^1.13.18",
         "description-vue-components": "^1.0.5",
         "dynamic-web-vue-components": "^1.0.3",
@@ -41,6 +41,7 @@
         "text-contents-vue-components": "^1.0.8",
         "vue": "^2.6.12",
         "vue-loader": "^15.9.8",
+        "vue-slider-component": "^3.2.24",
         "vue-template-compiler": "^2.6.12",
         "web-page-designer-vue-components": "^1.0.1"
     }
