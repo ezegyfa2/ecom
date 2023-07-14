@@ -14,4 +14,15 @@ class HomeController extends Controller
     public function products() {
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_products', [], 'app');
     }
+
+    public function products() {
+        $template = (object) [
+            'type' => 'dynamic-template',
+            'data' => (object) [
+                'template_type_name' => 'ecom_products_page',
+                'params' => (object) [],
+            ]
+        ];
+        return view('layouts.dynamicPage', compact('template'));
+    }
 }
