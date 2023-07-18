@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Ezegyfa\LaravelHelperMethods\DynamicTemplateMethods;
 use Ezegyfa\LaravelHelperMethods\WebshopController;
 
-class HomeController extends WebshopController
+class HomeController extends Controller
 {
     protected $tableName = 'products';
 
