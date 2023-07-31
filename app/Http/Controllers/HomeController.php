@@ -32,4 +32,8 @@ class HomeController extends Controller
     public function info() {
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_info', [], 'app');
     }
+
+    public function admin() {
+        return DynamicTemplateMethods::getTemplateDynamicPage('ecom_admin', [], 'app');
+    }
 }
