@@ -44,7 +44,8 @@ class LoginController extends Controller
                 'email' => $input['email'],
                 'password' => $input['password']
             ];
-            if (auth()->attempt($loginData)) {
+            $remember_me = $request->has('remember_me');$remember_me = $request->has('remember_me');$remember_me = $request->has('remember_me');$remember_me = $request->has('remember_me');
+            if (auth()->attempt($loginData, $remember_me)) {
                 return redirect()->route('home');
             }
             else {
