@@ -18,8 +18,8 @@ Route::get('/contact', 'App\Http\Controllers\HomeController@contact');
 Route::get('/info', 'App\Http\Controllers\HomeController@info');
 
 Route::group(['middleware'=>'guest'], function() {
-    Route::get('/login', 'App\Http\Controllers\HomeController@login')->name('login');
-    Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login.post');
+    Route::get('/login', 'App\Http\Controllers\Auth\LoginController@loginPage')->name('loginPage');
+    Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
     Route::get('/registration', 'App\Http\Controllers\HomeController@registration');
 });
 
