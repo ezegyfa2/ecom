@@ -12,11 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'App\Http\Controllers\HomeController@welcome');
+Route::get('/', 'App\Http\Controllers\HomeController@welcome')->middleware('auth')->name('home');
 Route::get('/products', 'App\Http\Controllers\HomeController@products');
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact');
 Route::get('/info', 'App\Http\Controllers\HomeController@info');
-Route::get('/login', 'App\Http\Controllers\HomeController@login');
-Route::get('/registration', 'App\Http\Controllers\HomeController@registration');
-Route::get('/admin', 'App\Http\Controllers\HomeController@admin');
 
+Route::group(['middleware'=>'guest'], function() {
+    Route::get('/login', 'App\Http\Controllers\HomeController@login')->name('login');
+    Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login.post');
+    Route::get('/registration', 'App\Http\Controllers\HomeController@registration');
+});
+
+Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::get('/admin', 'App\Http\Controllers\HomeController@admin');
