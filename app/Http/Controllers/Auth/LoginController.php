@@ -40,7 +40,8 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['name'], 'password' => $input['password'])))
+        $remember_me = $request->has('remember_me');
+        if(auth()->attempt(array('email' => $input['name'], 'password' => $input['password']), $remember_me))
         {
             return redirect()->route('home');
         }
