@@ -59,8 +59,16 @@ class LoginController extends Controller
 
     public function loginPage(Request $request) {
         $tableInfos = DatabaseInfos::getTableInfosByColumns('users', [ 'email', 'password' ]);
+        $formItemSections = $tableInfos->getFormInfos('auth');
+        array_push($formItemSections, (object) [
+            'type' => 'checkbox-input',
+            'data' => (object) [
+                'name' => 'remember_me',
+                'label' => __('auth.label.remember_me')
+            ]
+        ]);
         $templateParams = (object) [
-            'form_item_sections' => $tableInfos->getFormInfos()
+            'form_item_sections' => $formItemSections
         ];
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_login', $templateParams, 'app');
     }
