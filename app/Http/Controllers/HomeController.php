@@ -17,10 +17,6 @@ class HomeController extends Controller
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_products', [], 'app');
     }
 
-    public function registration() {
-        return DynamicTemplateMethods::getTemplateDynamicPage('ecom_registration', [], 'app');
-    }
-
     public function contact() {
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_contact', [], 'app');
     }

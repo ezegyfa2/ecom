@@ -11,33 +11,30 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use Auth;
    
-class LoginController extends Controller
+class AuthenticationController extends Controller
 {
-  
- #   use AuthenticatesUsers;
-  
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-   
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-   
+
+    public static function registerRoutes() {
+        Route::get('/login', 'App\Http\Controllers\Auth\AuthenticationController@loginPage')->name('loginPage');
+        Route::post('/login', 'App\Http\Controllers\Auth\AuthenticationController@login')->name('login');
+        Route::get('/registration', 'App\Http\Controllers\Auth\AuthenticationController@registrationPage')->name('registrationPage');
+        Route::get('/logout', 'App\Http\Controllers\Auth\AuthenticationController@logout')->name('logout');
+    }
+
     public function login(Request $request)
     {
         try {
             $input = $request->all();
             $validators = DatabaseInfos::getTableInfosByColumns('users', [ 'email', 'password' ])->getValidators();
+            foreach($validators['email'] as $k => $v) {
+                if(strpos($v, 'unique') !== false) {
+                    unset($validators['email'][$k]);
+                }
+            }
             //array_push($validators, 'email in users');
             $request->validate($validators);
             $loginData = [
@@ -57,7 +54,7 @@ class LoginController extends Controller
         }
     }
 
-    public function loginPage(Request $request) {
+    public function loginPage() {
         $tableInfos = DatabaseInfos::getTableInfosByColumns('users', [ 'email', 'password' ]);
         $formItemSections = $tableInfos->getFormInfos('auth');
         array_push($formItemSections, (object) [
@@ -79,5 +76,13 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function registration(Request $request) {
+
+    }
+
+    public function registrationPage() {
+        return DynamicTemplateMethods::getTemplateDynamicPage('ecom_registration', [], 'app');
     }
 }
