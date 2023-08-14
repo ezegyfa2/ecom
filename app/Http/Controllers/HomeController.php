@@ -22,6 +22,10 @@ class HomeController extends WebshopController
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_login', [], 'app');
     }
 
+    public function registration() {
+        return DynamicTemplateMethods::getTemplateDynamicPage('ecom_registration', [], 'app');
+    }
+
     public function contact() {
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_contact', [], 'app');
     }
@@ -32,6 +36,10 @@ class HomeController extends WebshopController
 
     public function getData() {
         $data = $this->getBasicData();
+    }
+
+    public function admin() {
+        return DynamicTemplateMethods::getTemplateDynamicPage('ecom_admin', [], 'app');
         $data = DataStructureMethods::getRelationReplacedRows($data, $this->tableName, 'image_id');
         return response()->json($data);
     }

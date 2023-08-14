@@ -18,3 +18,6 @@ Route::post('/products/get-data', 'App\Http\Controllers\HomeController@getData')
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact');
 Route::get('/info', 'App\Http\Controllers\HomeController@info');
 Route::get('/login', 'App\Http\Controllers\HomeController@login');
+Route::get('/registration', 'App\Http\Controllers\HomeController@registration');
+Route::get('/admin', 'App\Http\Controllers\HomeController@admin');
+
