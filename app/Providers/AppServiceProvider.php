@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Ezegyfa\LaravelHelperMethods\CopyNodeModules;
+use Ezegyfa\LaravelHelperMethods\CreateFakeData;
 use Ezegyfa\LaravelHelperMethods\Language\Commands\CreateListToTranslate;
 use Ezegyfa\LaravelHelperMethods\Language\Commands\CreateTranslateFile;
 use Illuminate\Support\ServiceProvider;
@@ -18,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->commands([
             CopyNodeModules::class,
+            CreateFakeData::class,
             CreateTranslateFile::class,
+            CreateListToTranslate::class,
             CreateListToTranslate::class,
         ]);
         $this->loadViewsFrom(base_path('vendor/ezegyfa/laravel-helper-methods/src'), 'ezegyfa');

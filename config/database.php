@@ -4,7 +4,17 @@ use Illuminate\Support\Str;
 
 return [
 
-    'admin' => [],
+    'admin' => [
+        'filterExceptionColumnNames' => [
+            'image_id',
+        ],
+        'images' => [
+            'url' => 'images',
+            'renderColumnNames' => [
+                'url',
+            ],
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

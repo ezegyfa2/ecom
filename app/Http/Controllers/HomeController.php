@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Ezegyfa\LaravelHelperMethods\DynamicTemplateMethods;
 use Ezegyfa\LaravelHelperMethods\WebshopController;
+use Ezegyfa\LaravelHelperMethods\Database\DataStructureMethods;
 
-class HomeController extends Controller
+class HomeController extends WebshopController
 {
     protected $tableName = 'products';
 
@@ -27,5 +28,11 @@ class HomeController extends Controller
 
     public function info() {
         return DynamicTemplateMethods::getTemplateDynamicPage('ecom_info', [], 'app');
+    }
+
+    public function getData() {
+        $data = $this->getBasicData();
+        $data = DataStructureMethods::getRelationReplacedRows($data, $this->tableName, 'image_id');
+        return response()->json($data);
     }
 }
