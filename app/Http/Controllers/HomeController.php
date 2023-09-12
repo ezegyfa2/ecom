@@ -45,4 +45,11 @@ class HomeController extends WebshopController
         $data = DataStructureMethods::getRelationReplacedRows($data, $this->tableName, 'image_id');
         return response()->json($data);
     }
+
+    public function testOptions() {
+        $columnName = request()->get('column-name');
+        $tableInfos = DatabaseInfos::getAdminTableInfos('products', 'index');
+        $relationInfos = $tableInfos->getColumnRelation($tableInfos->columnInfos[$columnName]);
+        return $relationInfos->getOptions(request()->get('searched-text', 10));
+    }
 }
