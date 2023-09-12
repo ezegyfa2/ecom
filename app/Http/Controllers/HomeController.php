@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Ezegyfa\LaravelHelperMethods\DynamicTemplateMethods;
 use Ezegyfa\LaravelHelperMethods\WebshopController;
+use Ezegyfa\LaravelHelperMethods\Database\FormGenerating\DatabaseInfos;
 use Ezegyfa\LaravelHelperMethods\Database\DataStructureMethods;
 
 class HomeController extends WebshopController
@@ -35,7 +36,8 @@ class HomeController extends WebshopController
     }
 
     public function getData() {
-        $data = $this->getBasicData();
+        $tableInfos = DatabaseInfos::getTableInfos()[$this->tableName];
+        return $tableInfos->getRequestDataResponse('products');
     }
 
     public function admin() {
